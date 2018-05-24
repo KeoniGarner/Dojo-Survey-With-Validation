@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+    <title>Survey</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+    <h1>Dojo Survey</h1>
+
+    <form action="/results" method="post">
+        {% with messages = get_flashed_messages() %} 
+            {% if messages %} 
+                {% for message in messages %}
+                    <p>{{message}}</p>
+                {% endfor %} 
+            {% endif %} 
+        {% endwith %}
+        <span>First Name:
+            <input type="text" name="name">
+        </span>
+        <span>Dojo Location:
+            <select name="location">
+                <option value="San Jose">San Jose</option>
+                <option value="Seattle">Seattle</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Dallas">Dallas</option>
+                <option value="Chicago">Chicago</option>
+                <option value="Washington D.C.">Washington D.C.</option>
+                <option value="Tulsa">Tulsa</option>
+            </select>
+        </span>
+        <span>Favorite Language:
+            <select name="language">
+                <option value="Python">Python</option>
+                <option value="C#">C#</option>
+                <option value="C++">C++</option>
+                <option value="JavaScript">JavaScript</option>
+                <option value="Ruby">Ruby</option>
+                <option value="PHP">PHP</option>
+            </select>
+        </span>
+        <span>Comment (optional):
+            <textarea name="comment" cols="30" rows="10"></textarea>
+        </span>
+        <span>
+            <input type="submit" value="Submit">
+        </span>
+    </form>
+</body>
+
+</html>
